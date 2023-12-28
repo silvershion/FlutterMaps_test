@@ -1,7 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Tab3 extends StatelessWidget {
-  const Tab3({Key? key}) : super(key: key);
+  const Tab3({super.key});
+
+  Future<void> _makeHttpRequest(BuildContext context) async {
+    var url = Uri.parse('https://catfact.ninja/fact');
+
+    try {
+      var response = await http.get(url);
+
+      print('Response status: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseBody = json.decode(response.body);
+        String fact = responseBody['fact'];
+
+        _showBottomSheet(context, fact);
+
+        print('Cat Fact: $fact');
+      } else {
+        print('Error response body: ${response.body}');
+      }
+    } catch (error) {
+      print('Error: $error');
+    }
+  }
+
+  void _showBottomSheet(BuildContext context, String catFact) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            catFact,
+            style: TextStyle(fontSize: 18.0),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +49,26 @@ class Tab3 extends StatelessWidget {
         title: const Text('Third Route'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to the first route when tapped.
-            Navigator.pop(context);
-          },
-          child: const Text('Volver!'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 16.0), // Use named argument 'height'
+            ElevatedButton(
+              onPressed: () {
+                _makeHttpRequest(context);
+              },
+              child: Text('Get Cat Fact'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Call the function or perform the action when the button is pressed.
+                _makeHttpRequest(context); // Pass any needed parameters
+              },
+              child: const Text('Volver!'),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
