@@ -1,0 +1,11 @@
+{
+    "posts": [
+      { "id": 1, "title": "Hello World" },
+      { "id": 2, "title": "Json-server" }
+    ],
+    "comments": [
+      { "id": 1, "body": "Great post!", "postId": 1 },
+      { "id": 2, "body": "Awesome!", "postId": 1 },
+      { "id": 3, "body": "Nice tutorial", "postId": 2 }
+    ]
+  }

@@ -7,6 +7,7 @@ import 'Tabs/tab1.dart';
 import 'Tabs/tab2.dart';
 import 'Tabs/tab3.dart';
 import 'Tabs/tab4.dart';
+import 'Tabs/tab5.dart';
 
 void main() {    
   runApp(const MyApp()); 
@@ -53,8 +54,10 @@ class MyHomePage extends StatelessWidget {
             children: const [
               Enlace(tabPage: Tab1(), titulo: Text(" Tab numero uno ")),
               Enlace(tabPage: Tab2(), titulo: Text(" Tab segundo ")),
-              Enlace(tabPage: Tab3(), titulo: Text(" Tab 3 ")),
+              Enlace(tabPage: Tab3(), titulo: Text(" Tab Request HTTP ")),
               Enlace(tabPage: Tab4(), titulo: Text(" Tab para testeo ")),
+              Enlace(tabPage: Tab5(), titulo: Text(" Tab testeo JWT.io ")),  
+
             ],
           ),
         ),

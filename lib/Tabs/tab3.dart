@@ -32,10 +32,10 @@ class Tab3 extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             catFact,
-            style: TextStyle(fontSize: 18.0),
+            style: const TextStyle(fontSize: 18.0),
           ),
         );
       },
@@ -52,12 +52,12 @@ class Tab3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 16.0), // Use named argument 'height'
+            const SizedBox(height: 16.0), // Use named argument 'height'
             ElevatedButton(
               onPressed: () {
                 _makeHttpRequest(context);
               },
-              child: Text('Get Cat Fact'),
+              child: const Text('Dato Gatuno'),
             ),
             ElevatedButton(
               onPressed: () {
